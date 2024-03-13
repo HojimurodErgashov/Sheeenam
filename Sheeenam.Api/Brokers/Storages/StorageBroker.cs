@@ -1,11 +1,16 @@
-﻿using EFxceptions;
+﻿//===============================================
+//Copyright(c) Coalition of Good-Hearted Engineers
+//Free To Use Comfort and Peace
+//===============================================
+
+using EFxceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Sheeenam.Api.Models.Foundations.Guests;
 
 namespace Sheeenam.Api.Brokers.Storages
 {
-    public  class StorageBroker:EFxceptionsContext
+    public partial  class StorageBroker:EFxceptionsContext,IStorageBroker
     {
         private readonly IConfiguration configuration;
 
@@ -23,7 +28,6 @@ namespace Sheeenam.Api.Brokers.Storages
             optionsBuilder.UseNpgsql(connectionString);
         }
 
-        public DbSet<Guest> Guests { get; set; }
         public override void Dispose() {}
     }
 }
